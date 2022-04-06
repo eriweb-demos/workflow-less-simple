@@ -1,0 +1,10 @@
+name: reusable
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    uses: eriweb-demos/workflow-reusable/.github/workflows/demo.yaml@main
+    with:
+      name: 'reusable workflow'
