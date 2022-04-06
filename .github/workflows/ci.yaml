@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: eriweb-demos/action-demo-dockerfile
+      - uses: eriweb-demos/action-demo-dockerfile@main
       - run: echo "we built stuff"
 
   test_code:
