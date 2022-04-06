@@ -1,0 +1,16 @@
+name: ci
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  test_code:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: eriweb-demos/action-demo-nodejs@main
+  
+  reusable:
+    uses: eriweb-demos/workflow-reusable/.github/workflows/demo.yaml@main
+    with:
+      name: 'advanced workflow'
