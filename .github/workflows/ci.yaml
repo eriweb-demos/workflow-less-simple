@@ -12,6 +12,12 @@ jobs:
       - uses: eriweb-demos/action-demo-dockerfile@main
       - run: echo "we built stuff"
 
+  other_step:
+    runs-on: ubuntu-latest
+    needs: build_code
+    steps:
+      - run: echo "this is another step!"
+
   test_code:
     runs-on: ubuntu-latest
     needs: build_code
@@ -20,9 +26,13 @@ jobs:
       - uses: eriweb-demos/action-demo-nodejs@main
       - run: echo "all tests are okay!"
     
-  
-  reusable:
-    needs: test_code
+  another_step:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "we need more steps!"
+
+  deploy:
+    needs: [test_code, other_step, another_step]
     uses: eriweb-demos/workflow-reusable/.github/workflows/demo.yaml@main
     with:
       name: 'advanced workflow'
